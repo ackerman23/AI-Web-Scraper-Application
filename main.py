@@ -3,6 +3,7 @@ from scrape import scrape_website, split_dom_content, extract_body_content, clea
 from parse import parse_with_ollama
 import pandas as pd
 import json
+from langchain_ollama import Ollama
 
 st.title("Professors info Scraper")
 url = st.text_input("Enter a Website URL: ")

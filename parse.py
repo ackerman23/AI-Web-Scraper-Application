@@ -1,4 +1,4 @@
-from langchain_ollama import OllamaLLM
+from langchain_ollama import Ollama
 from langchain_core.prompts import ChatPromptTemplate
 
 # Modify the prompt to enforce proper CSV structure
@@ -17,7 +17,7 @@ template = (
 )
 
 
-model = OllamaLLM(model="llama3.2")
+llm = Ollama(model="llama2:3.2")
 
 def parse_with_ollama(dom_chunks, parse_description, export_format):
     # Adjust the template based on the export format
@@ -26,7 +26,7 @@ def parse_with_ollama(dom_chunks, parse_description, export_format):
     elif export_format == "JSON":
         prompt = ChatPromptTemplate.from_template(template + "\nFormat: JSON")
         
-    chain = prompt | model
+    chain = prompt | llm
     
     parsed_results = []
     
